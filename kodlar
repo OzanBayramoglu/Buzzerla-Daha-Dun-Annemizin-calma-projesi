@@ -1,0 +1,52 @@
+/*
+  Buzzer ile "Daha Dün Annemizin" şarkısını çalma projesi
+
+        diğer notaların frekanslarını öğrenmek isterseniz:
+         http://www.phy.mtu.edu/~suits/notefreqs.html
+  
+ Bu kodlar İlayda Adıgüzel tarafından hazırlanmıştır. 
+ Kullanırken referans gösterirseniz çok mutlu olurum,
+
+ her türlü sorular vs için : ilaydamirrors@gmail.com
+ 
+ İlayda, Mayıs-2016
+ */
+int buzzerPini = 4; //Buzzer'ın takılı olduğu pini tanımladık
+
+int notaSayisi =56; //Toplam nota sayımıza değişken atadık
+
+int E = 330;  //E mi notasına karşılık gelir frekansı 330 dur
+int C = 262;   // C do notasına karşılık gelir frekansı 262 dir
+int D = 294;   //D re notasına karşılık gelir frekansı 294 tür
+int G = 392; //G sol notasına karşılık gelir frekansı 392 dir
+int A = 440; //A la notasına karşılık gelir frekansı 440 dır
+int F = 349;  //F fa notasına karşılık gelir frekansı 349dur
+
+
+int notalar[] = {C,C,G,G,A,A,G,F,F,E,E,D,D,C,C,C,G,G,A,A,G,F,F,E,E,D,D,C,G,G,F,F,E,E,D,G,G,F,F,E,E,D,C,C,G,G,A,A,G,F,F,E,E,D,D,C};
+/*Notalarımız için bir notalar dizisi oluşturduk */
+
+void setup()
+{
+  for (int nota = 0; nota < notaSayisi; nota++)
+  /*nota değişkenimiz başlangıçta sıfırdır ve notaSayisi(56)ndan küçük olduğu sürece 1 eklenerek artar */
+  {
+    tone(buzzerPini, notalar[nota]); //buzzer pinine nota'yı çaldırır 
+   
+    /*örn: bi yerde nota = 3 olur buda dizimizde G ye  karşılık gelir yani sol çalar
+     sonra 1 eklenir 4 olur ve A ya karşılık gelir la çalar ve devam eder */
+     
+    delay(500); //500 milisaniye (yarım saniye) bu nota çalınır
+    noTone(buzzerPini); //buzzer susar
+    delay(20); //20 milisaniye beklenir
+  }
+  noTone(buzzerPini); //nota 56 dan büyük olunca döngüden çıkılır ve buzzer susar.
+}
+ 
+void loop()
+{
+  /*Tüm kodlar void setup ın içine yazıldı çünkü bir kere çalıştırmak istiyorum.
+   Siz sürekli çalışmasını isterseniz void setup içindeki kodları buraya atabilirsiniz 
+   tabii sonuna bir de delay atarak tekrar başlamadan önce beklenmesi sağlanılabilir
+   */
+}
